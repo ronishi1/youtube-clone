@@ -3,8 +3,11 @@ import Item from './Item';
 
 const List = (props) => {
     let videos = props.videos.map((video) => {
-        return <Item key={video.id.videoId} video={video}/>
+        if(video != props.video){
+            return <Item clickVideoCallback={props.clickVideoCallback} key={video.id.videoId} video={video}/>
+        }
     })
+
     return (
         <ul className="collection"> 
             {videos}

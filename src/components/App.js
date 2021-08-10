@@ -2,9 +2,11 @@ import React, {useState} from 'react';
 import SearchBar from './SearchBar';
 import List from './List';
 import axios from 'axios';
+import VideoViewer from './VideoViewer';
 
 const App = () => {
     const [videos,setVideos] = useState([]);
+    const [video,setVideo] = useState(null);
 
     
     const searchCallback = async (term) => {
@@ -20,17 +22,22 @@ const App = () => {
         })
         console.log(response.data.items);
         setVideos(response.data.items);
+        setVideo(response.data.items[0]);
     };
+
+    const clickVideoCallback = (video) => {
+        setVideo(video);
+    }
 
     return (
         <div className="container">
             <SearchBar searchCallback={searchCallback}/>
             <div className="row">
                 <div className="col s7">
-                    Hello World
+                    <VideoViewer video={video}/>
                 </div>
                 <div className="col s5">
-                    <List videos={videos}/>
+                    <List videos={videos} video={video} clickVideoCallback={clickVideoCallback}/>
                 </div>
             </div>
         </div>

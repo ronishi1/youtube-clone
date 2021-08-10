@@ -3,7 +3,7 @@ import './Item.css';
 
 const Item = (props) => {
     return (
-        <li className="collection-item video-item">
+        <li className="collection-item video-item" onClick={() => {props.clickVideoCallback(props.video)}}>
             <img className="thumbnail" src={props.video.snippet.thumbnails.medium.url} />
             <div className="item-text">
                 <div className="item-title">
