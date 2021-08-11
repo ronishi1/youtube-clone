@@ -25,7 +25,16 @@ const App = () => {
         setVideo(response.data.items[0]);
     };
 
-    const clickVideoCallback = (video) => {
+    const clickVideoCallback = async (video) => {
+        let response = await axios.get('https://www.googleapis.com/youtube/v3/commentThreads',
+        {
+            params:{
+                key:key,
+                part:"snippet,replies",
+                videoId:video.id.videoId
+            }
+        })
+        console.log(response.data);
         setVideo(video);
     }
 

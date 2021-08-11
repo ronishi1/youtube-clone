@@ -8,8 +8,8 @@ const VideoViewer = (props) => {
 
     return (
         <div>
-             <div class="video-container">
-                <iframe src={source} frameborder="0" allowfullscreen></iframe>
+             <div className="video-container">
+                <iframe src={source} frameBorder="0" allowFullScreen></iframe>
             </div>
             <h6>{props.video.snippet.title}</h6>
             <div>
